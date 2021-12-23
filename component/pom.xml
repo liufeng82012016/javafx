@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.my.liufeng</groupId>
-    <artifactId>com.my.liufeng.ui</artifactId>
+    <artifactId>component</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
