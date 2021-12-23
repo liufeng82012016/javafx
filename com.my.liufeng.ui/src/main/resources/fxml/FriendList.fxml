@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root fx:id="container" maxHeight="-Infinity" maxWidth="400.0" minHeight="600.0" minWidth="300.0" prefHeight="600.0"
+         prefWidth="300.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox maxHeight="50.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0">
+            <children>
+                <TextField fx:id="searchField" maxHeight="30.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0"
+                           prefWidth="200.0" promptText="搜索" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </HBox.margin>
+                </TextField>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+                    <HBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </HBox.margin>
+                    <image>
+                        <Image url="@/img/bird.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+        <ListView fx:id="listView" minHeight="550.0" minWidth="300.0" prefHeight="550.0" prefWidth="300.0"/>
+    </children>
+    <stylesheets>
+        <URL value="@/css/FriendList.css"/>
+    </stylesheets>
+</fx:root>

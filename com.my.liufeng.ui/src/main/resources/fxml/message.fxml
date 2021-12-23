@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<?import javafx.scene.text.Text?>
+<fx:root fx:id="root" maxHeight="-Infinity" maxWidth="600" minHeight="50.0" minWidth="-Infinity" prefHeight="50.0"
+         prefWidth="600.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fx:id="avatar" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+                <Insets left="10.0" top="10.0"/>
+            </HBox.margin>
+        </ImageView>
+        <VBox fx:id="vBox" maxWidth="550.0" minHeight="50.0" minWidth="550.0" prefHeight="50.0" prefWidth="550.0">
+            <children>
+                <Label fx:id="nickname" maxHeight="15.0" minHeight="15.0" minWidth="10.0" prefHeight="15.0">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Label>
+<!--                <Text fx:id="message"/>-->
+            </children>
+            <HBox.margin>
+                <Insets left="10.0"/>
+            </HBox.margin>
+        </VBox>
+    </children>
+    <stylesheets>
+        <URL value="@/css/Message.css"/>
+    </stylesheets>
+</fx:root>

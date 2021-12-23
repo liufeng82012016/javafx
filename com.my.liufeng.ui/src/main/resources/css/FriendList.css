@@ -1,0 +1,30 @@
+#container {
+    -fx-background-color: none;
+}
+
+.list-view {
+    -fx-padding: 0px;
+    -fx-background-color: none;
+}
+
+/* 去除滚动条*/
+.list-view .scroll-bar:vertical,
+.list-view .scroll-bar:horizontal {
+    -fx-pref-width: 0px;
+}
+
+.list-cell {
+    /* 去除元素间距*/
+    -fx-padding: 0px;
+    -fx-background-color: none;
+}
+
+/*悬浮效果*/
+.list-cell:hover {
+    -fx-text-fill: pink;
+}
+/*选中效果*/
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+    -fx-text-fill: white;
+}
