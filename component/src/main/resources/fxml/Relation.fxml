@@ -24,7 +24,7 @@
             <children>
                 <HBox fx:id="hBox" maxHeight="27.0" minHeight="27.0" prefHeight="27.0" prefWidth="245.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label fx:id="title" maxHeight="17.0" minHeight="17.0" minWidth="165.0" prefHeight="17.0" prefWidth="160.0" HBox.hgrow="ALWAYS">
+                        <Label fx:id="title" maxHeight="17.0" minHeight="17.0" minWidth="145.0" prefHeight="17.0" prefWidth="145.0" HBox.hgrow="ALWAYS">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
@@ -32,7 +32,7 @@
                                 <Font name="System Bold" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="time" maxHeight="17.0" maxWidth="75.0" minHeight="17.0" minWidth="75.0" prefHeight="17.0" prefWidth="75.0" HBox.hgrow="NEVER">
+                        <Label fx:id="time" maxHeight="17.0" maxWidth="80.0" minHeight="17.0" minWidth="80.0" prefHeight="17.0" prefWidth="80.0" HBox.hgrow="NEVER">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
@@ -48,6 +48,6 @@
         </VBox>
     </children>
     <stylesheets>
-        <URL value="@/css/Friend.css" />
+        <URL value="@/css/Relation.css" />
     </stylesheets>
 </fx:root>

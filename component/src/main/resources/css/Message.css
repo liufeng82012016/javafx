@@ -1,0 +1,39 @@
+#root {
+    -fx-background-color: none;
+}
+
+
+/*昵称的css样式*/
+#nickname {
+    -fx-max-width: 500;
+    -fx-background-color: none;
+    -fx-text-fill: #4f4b4b;
+    -fx-text-overrun: ELLIPSIS;
+}
+
+#box {
+    -fx-alignment: top-right;
+    -fx-min-width: 500;
+
+}
+
+/*聊天内容展示*/
+#message-right {
+    -fx-max-width: 500;
+    -fx-background-color: lightblue;
+    -fx-text-fill: #4f4b4b;
+    -fx-wrap-text: true;
+    -fx-background-radius: 6px 0px 6px 6px;
+}
+
+
+#message-left {
+    -fx-max-width: 500;
+    -fx-background-color: white;
+    /*文本颜色填充*/
+    -fx-text-fill: #4f4b4b;
+    /*自动换行*/
+    -fx-wrap-text: true;
+    /*设置圆角，顺序为左上/右上/右下/左下*/
+    -fx-background-radius: 0px 6px 6px 6px;
+}

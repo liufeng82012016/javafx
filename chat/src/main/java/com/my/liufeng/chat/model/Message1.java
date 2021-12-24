@@ -1,4 +1,4 @@
-package com.my.liufeng.ui.model.mock;
+package com.my.liufeng.chat.model;
 
 import com.my.liufeng.ui.model.Message;
 import com.my.liufeng.ui.util.RandomUtil;
@@ -11,7 +11,7 @@ public class Message1 implements Message {
 
     @Override
     public String getMessage() {
-        return RandomUtil.randomStr(120);
+        return RandomUtil.randomStr(RandomUtil.randomInt(120));
     }
 
     @Override
@@ -21,6 +21,11 @@ public class Message1 implements Message {
 
     @Override
     public boolean mine() {
-        return (int) (Math.random() * 10) == 1;
+        return (int) (Math.random() * 10) < 5;
+    }
+
+    @Override
+    public boolean group() {
+        return (int) (Math.random() * 10) < 5;
     }
 }

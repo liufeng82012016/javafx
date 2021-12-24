@@ -1,0 +1,12 @@
+#root {
+    -fx-background-color: none;
+
+}
+
+#textArea {
+    -fx-focus-color: none;
+    -fx-border-radius: none;
+    -fx-background-color: none;
+    -fx-border-width: 0px;
+    -fx-padding: 0px;
+}

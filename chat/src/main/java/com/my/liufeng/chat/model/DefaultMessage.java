@@ -1,4 +1,4 @@
-package com.my.liufeng.ui.model.mock;
+package com.my.liufeng.chat.model;
 
 import com.my.liufeng.ui.model.Message;
 
@@ -20,6 +20,11 @@ public class DefaultMessage implements Message {
 
     @Override
     public boolean mine() {
-        return (int) (Math.random() * 10) == 1;
+        return (int) (Math.random() * 10) < 5;
+    }
+
+    @Override
+    public boolean group() {
+        return (int) (Math.random() * 10) < 5;
     }
 }

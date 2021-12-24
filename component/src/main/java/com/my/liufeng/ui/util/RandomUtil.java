@@ -29,4 +29,8 @@ public class RandomUtil {
         }
         return sb.toString();
     }
+
+    public static int randomInt(int bound) {
+        return random.nextInt(bound);
+    }
 }

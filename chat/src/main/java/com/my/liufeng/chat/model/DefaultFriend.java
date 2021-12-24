@@ -1,4 +1,4 @@
-package com.my.liufeng.ui.model.mock;
+package com.my.liufeng.chat.model;
 
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.RandomUtil;

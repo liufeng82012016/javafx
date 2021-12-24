@@ -11,7 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * 联系人
+ */
 public class RelationComp extends HBox {
     @FXML
     private ImageView avatar;
@@ -29,7 +31,7 @@ public class RelationComp extends HBox {
 
     public RelationComp(Relation item) {
         // 加载fxml
-        FxUtils.load(this, "fxml/Friend.fxml");
+        FxUtils.load(this, "fxml/Relation.fxml");
         // 填充数据
         title.setText(item.getTitle());
         time.setText(item.getTime());
@@ -39,42 +41,8 @@ public class RelationComp extends HBox {
         hBox.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("hbox.width:" + newValue);
                 title.setPrefWidth(newValue.doubleValue() - 85);
             }
         });
-
-//        hBox.heightProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("hbox.height:" + newValue);
-//            }
-//        });
-//        vBox.widthProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("vbox.width:" + newValue);
-//            }
-//        });
-//        vBox.heightProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("vbox.height:" + newValue);
-//            }
-//        });
-//
-//        this.widthProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("box.width:" + newValue);
-//            }
-//        });
-//
-//        this.heightProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                System.out.println("box.height:" + newValue);
-//            }
-//        });
     }
 }

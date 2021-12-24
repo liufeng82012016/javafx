@@ -2,6 +2,18 @@
     -fx-background-color: none;
 }
 
+#searchField {
+    -fx-focus-color: none;
+    -fx-border-radius: none;
+    /*-fx-background-color: lightgray;*/
+    -fx-text-fill: #504a4a;
+}
+
+#searchField:focused {
+    -fx-background-color: white;
+}
+
+
 .list-view {
     -fx-padding: 0px;
     -fx-background-color: none;
@@ -23,6 +35,7 @@
 .list-cell:hover {
     -fx-text-fill: pink;
 }
+
 /*选中效果*/
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
     -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);

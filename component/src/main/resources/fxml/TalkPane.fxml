@@ -8,28 +8,25 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<?import com.my.liufeng.ui.component.InputComp?>
 <fx:root fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
          prefHeight="600.0"
-         prefWidth="600.0" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/8"
+         prefWidth="600.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1">
-    <top>
+    <children>
         <Label maxHeight="50.0" maxWidth="600.0" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="600.0"
                text="Label" BorderPane.alignment="CENTER_LEFT">
-            <BorderPane.margin>
+            <VBox.margin>
                 <Insets left="20.0"/>
-            </BorderPane.margin>
+            </VBox.margin>
             <font>
                 <Font name="System Bold" size="16.0"/>
             </font>
         </Label>
-    </top>
-    <center>
-        <ListView fx:id="messageList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
-    </center>
-    <bottom>
-        <TextArea fx:id="input" maxHeight="120.0" maxWidth="600.0" minHeight="120.0" minWidth="600.0" prefHeight="120.0"
-                  prefWidth="600.0" BorderPane.alignment="CENTER"/>
-    </bottom>
+        <Separator maxHeight="3.0" minHeight="3.0" minWidth="600.0" prefHeight="3.0" prefWidth="600.0"/>
+        <ListView fx:id="messageList" prefHeight="427.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
+        <InputComp fx:id="input"></InputComp>
+    </children>
     <stylesheets>
         <URL value="@/css/TalkPane.css"/>
     </stylesheets>

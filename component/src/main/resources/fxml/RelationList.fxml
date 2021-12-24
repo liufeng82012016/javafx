@@ -10,27 +10,32 @@
          prefWidth="300.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox maxHeight="50.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0">
+        <HBox maxHeight="50.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" spacing="10">
             <children>
-                <TextField fx:id="searchField" maxHeight="30.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0"
-                           prefWidth="200.0" promptText="搜索" HBox.hgrow="ALWAYS">
+                <TextField fx:id="searchField" maxHeight="30.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0"
+                           prefWidth="150.0" promptText="搜索" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="20.0" top="10.0"/>
                     </HBox.margin>
                 </TextField>
-                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+                <Label>
                     <HBox.margin>
-                        <Insets left="20.0" top="10.0"/>
+                        <Insets right="20.0" top="10.0"/>
                     </HBox.margin>
-                    <image>
-                        <Image url="@/img/bird.png"/>
-                    </image>
-                </ImageView>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true"
+                                   HBox.hgrow="NEVER">
+                            <image>
+                                <Image url="@/img/add.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
             </children>
         </HBox>
         <ListView fx:id="listView" minHeight="550.0" minWidth="300.0" prefHeight="550.0" prefWidth="300.0"/>
     </children>
     <stylesheets>
-        <URL value="@/css/FriendList.css"/>
+        <URL value="@/css/RelationList.css"/>
     </stylesheets>
 </fx:root>
