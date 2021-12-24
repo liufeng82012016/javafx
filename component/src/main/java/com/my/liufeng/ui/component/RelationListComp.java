@@ -3,6 +3,8 @@ package com.my.liufeng.ui.component;
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.FxUtils;
 import com.my.liufeng.ui.util.ObjectUtils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -24,6 +26,8 @@ public abstract class RelationListComp extends VBox {
     @FXML
     protected TextField searchField;
     private final List<Relation> relations;
+
+    private Relation selected;
 
 
     public RelationListComp(List<Relation> relations) {
@@ -65,7 +69,19 @@ public abstract class RelationListComp extends VBox {
             }
             listView.setItems(FXCollections.observableList(collect));
         });
+        // 监听选项
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Relation>() {
+            @Override
+            public void changed(ObservableValue<? extends Relation> observable, Relation oldValue, Relation newValue) {
+                selected = newValue;
+            }
+        });
     }
 
-
+    /**
+     * 获取所选项
+     */
+    public Relation getSelected() {
+        return selected;
+    }
 }

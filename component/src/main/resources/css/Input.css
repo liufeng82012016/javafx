@@ -10,3 +10,8 @@
     -fx-border-width: 0px;
     -fx-padding: 0px;
 }
+
+#textArea .scroll-bar:vertical,
+#textArea.scroll-bar:horizontal {
+    -fx-pref-width: 0px;
+}

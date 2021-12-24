@@ -3,15 +3,8 @@ package com.my.liufeng.chat.model;
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.RandomUtil;
 
-import java.util.List;
-
 public class DefaultFriend implements Relation {
     private String title;
-
-    @Override
-    public List<Relation> search(List<Relation> list, String keyword) {
-        return list;
-    }
 
     @Override
     public String getIcon() {

@@ -23,4 +23,5 @@ public class MessageUI extends TalkPaneComp {
         }
         messageList.setItems(FXCollections.observableList(messages));
     }
+
 }

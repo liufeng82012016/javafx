@@ -22,6 +22,11 @@ public class RandomUtil {
         return min <= value && value <= max;
     }
 
+    /**
+     * 获取随机字符串
+     *
+     * @param length 字符串长度
+     */
     public static String randomStr(int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
@@ -30,6 +35,9 @@ public class RandomUtil {
         return sb.toString();
     }
 
+    /**
+     * 获取随机整数
+     */
     public static int randomInt(int bound) {
         return random.nextInt(bound);
     }

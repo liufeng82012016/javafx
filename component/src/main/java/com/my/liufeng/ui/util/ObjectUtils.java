@@ -14,4 +14,11 @@ public class ObjectUtils {
     public static boolean isBlank(String s) {
         return s == null || s.length() == 0;
     }
+
+    /**
+     * 判断对象是否为空
+     */
+    public static boolean isNull(Object obj) {
+        return obj == null;
+    }
 }

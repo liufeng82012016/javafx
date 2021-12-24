@@ -2,7 +2,7 @@ package com.my.liufeng.ui.component;
 
 import com.my.liufeng.ui.model.Message;
 import com.my.liufeng.ui.util.FxUtils;
-import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -22,9 +22,11 @@ public abstract class TalkPaneComp extends VBox {
     @FXML
     protected InputComp input;
 
+
     public TalkPaneComp(List<Message> messages) {
         FxUtils.load(this, "fxml/TalkPane.fxml");
-        messageList.setItems(FXCollections.observableList(messages));
+        messageList.getItems().addAll(messages);
+        messageList.scrollTo(messageList.getItems().size());
         // 设置渲染
         messageList.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>() {
             @Override
@@ -45,5 +47,20 @@ public abstract class TalkPaneComp extends VBox {
         });
     }
 
+    /**
+     * 获取输入文本
+     */
+    public String getText() {
+        return input.getText();
+    }
 
+    /**
+     * 添加信息
+     */
+    public void addMessage(Message message) {
+        ObservableList<Message> items = messageList.getItems();
+        items.add(message);
+        // 自动滚动到底部
+        messageList.scrollTo(items.size());
+    }
 }

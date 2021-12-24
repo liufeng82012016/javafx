@@ -17,7 +17,25 @@ public class InputComp extends VBox {
     @FXML
     private TextArea textArea;
 
+    /**
+     * 读取fxml，生成对应结构
+     */
     public InputComp() {
         FxUtils.load(this, "fxml/InputComp.fxml");
+//        textArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent event) {
+//                if (KeyCode.ENTER == event.getCode()) {
+//                    System.out.println("enter press");
+//                }
+//            }
+//        });
+    }
+
+    /**
+     * 获取text文本
+     */
+    public String getText() {
+        return textArea.getText();
     }
 }

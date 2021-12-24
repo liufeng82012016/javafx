@@ -31,7 +31,7 @@
         </HBox>
         <JFXTextArea fx:id="textArea" maxHeight="120.0" minHeight="80.0" minWidth="600.0" prefHeight="80.0"
                      prefWidth="600.0"
-                     promptText="请输入内容，按Enter发送"/>
+                     promptText="请输入内容，Shift+Enter发送"/>
     </children>
     <stylesheets>
         <URL value="@/css/Input.css"/>
