@@ -3,10 +3,13 @@ package com.my.liufeng.ui.component;
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.FxUtils;
 import com.my.liufeng.ui.util.ObjectUtils;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -25,17 +28,18 @@ public abstract class RelationListComp extends VBox {
     protected ListView<Relation> listView;
     @FXML
     protected TextField searchField;
-    private final List<Relation> relations;
+    @FXML
+    protected Label plus;
 
     private Relation selected;
 
 
-    public RelationListComp(List<Relation> relations) {
-        this.relations = relations;
+    public RelationListComp(ObservableList<Relation> relations) {
         // 加在fxml
         FxUtils.load(this, "fxml/RelationList.fxml");
         // 添加底部列表
-        listView.setItems(FXCollections.observableList(relations));
+//        listView.getItems().addAll(relations);
+        listView.itemsProperty().bindBidirectional(new SimpleListProperty<>(relations));
         // 设置渲染
         listView.setCellFactory(new Callback<ListView<Relation>, ListCell<Relation>>() {
             @Override

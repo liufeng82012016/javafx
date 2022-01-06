@@ -2,31 +2,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chat</artifactId>
-        <groupId>com.my.liufeng</groupId>
-        <version>0.0.1</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.my.liufeng</groupId>
     <artifactId>chat-client</artifactId>
     <version>0.0.1</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
+        <!-- javafx 图形界面-->
         <dependency>
             <groupId>com.my.liufeng</groupId>
             <artifactId>component</artifactId>
             <version>0.0.1</version>
         </dependency>
 
+        <!-- 网络请求-->
         <dependency>
             <groupId>com.my.liufeng</groupId>
-            <artifactId>chat-socket</artifactId>
+            <artifactId>rpc</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <!-- 基础工具-->
+        <dependency>
+            <groupId>com.my.liufeng</groupId>
+            <artifactId>util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- 公共实体类-->
+        <dependency>
+            <groupId>com.my.liufeng</groupId>
+            <artifactId>chat-entity</artifactId>
             <version>0.0.1</version>
         </dependency>
 

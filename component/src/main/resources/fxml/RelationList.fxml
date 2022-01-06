@@ -18,7 +18,7 @@
                         <Insets left="20.0" top="10.0"/>
                     </HBox.margin>
                 </TextField>
-                <Label>
+                <Label fx:id="plus">
                     <HBox.margin>
                         <Insets right="20.0" top="10.0"/>
                     </HBox.margin>

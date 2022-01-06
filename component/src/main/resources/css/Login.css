@@ -1,0 +1,12 @@
+#root {
+    -fx-background-image: url("/img/loginBack.jpg");
+    -fx-background-size: cover;
+}
+
+#login {
+    -fx-background-color: rgba(74, 27, 215, 0.3);
+}
+
+#change {
+    -fx-background-color: rgba(74, 27, 215, 0.3);
+}

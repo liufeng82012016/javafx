@@ -2,26 +2,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chat</artifactId>
-        <groupId>com.my.liufeng</groupId>
-        <version>0.0.1</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.my.liufeng</groupId>
     <artifactId>chat-server</artifactId>
+    <version>0.0.1</version>
+
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
+        <!-- 网络请求-->
         <dependency>
             <groupId>com.my.liufeng</groupId>
-            <artifactId>chat-socket</artifactId>
+            <artifactId>rpc</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <!-- 基础工具-->
+        <dependency>
+            <groupId>com.my.liufeng</groupId>
+            <artifactId>util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <!-- 公共实体类-->
+        <dependency>
+            <groupId>com.my.liufeng</groupId>
+            <artifactId>chat-entity</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <!-- spring 非web应用，自己实现-->
+        <dependency>
+            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <version>2.3.2.RELEASE</version>
+        </dependency>
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+        <!--sharding-jdbc 分表-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.shardingsphere</groupId>-->
+<!--            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>-->
+<!--            <version>4.1.1</version>-->
+<!--        </dependency>-->
+
+
     </dependencies>
 
     <build>
