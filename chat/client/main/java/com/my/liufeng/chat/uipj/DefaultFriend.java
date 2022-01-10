@@ -1,36 +1,69 @@
 package com.my.liufeng.chat.uipj;
 
+import com.my.liufeng.chat.entity.Group;
+import com.my.liufeng.chat.vo.FriendVO;
 import com.my.liufeng.ui.model.Relation;
-import com.my.liufeng.ui.util.RandomUtil;
+import com.my.liufeng.util.DateUtil;
 
 public class DefaultFriend implements Relation {
-    private String title;
+    private FriendVO friend;
+    private Group group;
+
+    private Long time;
+    private String content;
 
     @Override
     public String getIcon() {
-        return "img/bird.png";
+        return group != null ? group.getNickname() : friend.getNickname();
     }
 
     @Override
     public String getContent() {
-        return "content";
+        return content;
     }
 
     @Override
     public String getTime() {
-        return "2021/12/20";
+        return time == null ? null : DateUtil.formatYmd(time);
     }
 
     @Override
     public String getTitle() {
-        if (title == null) {
-            title = RandomUtil.randomStr(8);
-        }
-        return title;
+        return group != null ? group.getNickname() : friend.getNickname();
     }
 
     @Override
     public boolean group() {
-        return Math.random() > 0.5;
+        return group != null;
+    }
+
+    @Override
+    public Integer getId() {
+        return group != null ? group.getId() : friend.getId();
+    }
+
+    @Override
+    public Long getTimeMills() {
+        return time;
+    }
+
+    public DefaultFriend(FriendVO friend) {
+        this.friend = friend;
+    }
+
+    public DefaultFriend(Group group) {
+        this.group = group;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Long getMills() {
+        return time;
     }
 }

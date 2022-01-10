@@ -25,4 +25,6 @@ public interface Message {
      * 是否在群里
      */
     boolean group();
+
+    long time();
 }

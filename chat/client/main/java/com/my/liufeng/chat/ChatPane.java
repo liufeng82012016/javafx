@@ -27,7 +27,7 @@ public class ChatPane extends HBox {
     public ChatPane() {
         ObservableList<Relation> defaultFriends = DataManager.getSessions();
         ObservableList<Message> messages = defaultFriends == null || defaultFriends.isEmpty() ? FXCollections.emptyObservableList() :
-                DataManager.messageList.get(defaultFriends.get(0));
+                DataManager.getMessageList(defaultFriends.get(0));
         relationUI = new RelationUI(defaultFriends);
         messageUI = new MessageUI(messages);
         relationUI.setOnSelect(messageUI);
@@ -82,6 +82,11 @@ public class ChatPane extends HBox {
                         @Override
                         public boolean group() {
                             return false;
+                        }
+
+                        @Override
+                        public long time() {
+                            return System.currentTimeMillis();
                         }
                     };
                     messageUI.addMessage(message);

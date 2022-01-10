@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ChatService {
+public class ChatService extends HeartService {
     @Autowired
     private MessageService messageService;
 

@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.my.liufeng.chat.constants.Constants;
 import com.my.liufeng.chat.context.UserManager;
+import com.my.liufeng.chat.entity.Friend;
 import com.my.liufeng.chat.entity.Message;
+import com.my.liufeng.chat.entity.UserInfo;
 import com.my.liufeng.chat.mapper.MessageMapper;
-import com.my.liufeng.chat.service.FriendService;
-import com.my.liufeng.chat.service.GroupMemberService;
-import com.my.liufeng.chat.service.GroupService;
-import com.my.liufeng.chat.service.MessageService;
+import com.my.liufeng.chat.service.*;
 import com.my.liufeng.chat.util.ContextUtil;
+import com.my.liufeng.chat.vo.FriendVO;
 import com.my.liufeng.chat.vo.MessageQueryVO;
 import com.my.liufeng.chat.vo.NewMessageVO;
 import com.my.liufeng.util.CollectionUtil;
@@ -18,10 +18,8 @@ import com.my.liufeng.util.Conditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -33,6 +31,8 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
     private FriendService friendService;
     @Autowired
     private GroupMemberService groupMemberService;
+    @Autowired
+    private UserInfoService userInfoService;
 
     @Override
     public NewMessageVO messageList(MessageQueryVO messageQueryVO) {
@@ -41,9 +41,10 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
         NewMessageVO newMessageVO = new NewMessageVO();
         // 查询最新列表
         QueryWrapper<Message> queryWrapper = new QueryWrapper<>();
+        Integer maxMessageId = messageQueryVO != null ? messageQueryVO.getMaxMsgId() : null;
         queryWrapper.eq("user_id", userId)
-                .gt("id", messageQueryVO.getMaxMsgId())
-                .last(" limit 1");
+                .gt(maxMessageId != null, "id", maxMessageId)
+                .last(" limit 100");
         // 组装好友列表和群组列表
         List<Message> messageList = list(queryWrapper);
         if (CollectionUtil.isNotEmpty(messageList)) {
@@ -53,9 +54,26 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
                 if (message.getGroupId() != null) {
                     groupIdList.add(message.getGroupId());
                 }
-                friendIdList.add(message.getFrom());
+                friendIdList.add(message.getFromUserId());
             });
-            newMessageVO.setFriendList(friendService.select(friendIdList));
+            List<Friend> friends = friendService.select(friendIdList);
+            Map<Integer, String> idAndNicknameMap = new HashMap<>(friends.size());
+            friends.forEach(friend -> {
+                if (userId.equals(friend.getUserId())) {
+                    idAndNicknameMap.put(friend.getFriendId(), friend.getNickname1());
+                } else {
+                    idAndNicknameMap.put(friend.getUserId(), friend.getNickname2());
+                }
+            });
+            List<UserInfo> userInfos = userInfoService.select(friendIdList);
+            List<FriendVO> friendVOS = userInfos.stream().map(userInfo -> {
+                FriendVO friendVO = new FriendVO();
+                friendVO.setAvatar(userInfo.getAvatar());
+                friendVO.setNickname(idAndNicknameMap.get(userInfo.getId()));
+                friendVO.setId(userInfo.getId());
+                return friendVO;
+            }).collect(Collectors.toList());
+            newMessageVO.setFriendList(friendVOS);
             newMessageVO.setGroupList(groupService.select(groupIdList));
         }
         return newMessageVO;

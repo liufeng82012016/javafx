@@ -11,4 +11,8 @@ public interface Relation {
     String getTitle();
 
     boolean group();
+
+    Integer getId();
+
+    Long getTimeMills();
 }

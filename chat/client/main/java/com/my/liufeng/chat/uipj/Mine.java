@@ -1,7 +1,10 @@
 package com.my.liufeng.chat.uipj;
+
+import com.my.liufeng.chat.entity.UserInfo;
 import com.my.liufeng.ui.model.Relation;
 
 public class Mine implements Relation {
+    private UserInfo userInfo;
 
     @Override
     public String getIcon() {
@@ -20,12 +23,26 @@ public class Mine implements Relation {
 
     @Override
     public String getTitle() {
-        return "流风";
+        return getInstance().userInfo.getNickname();
     }
 
     @Override
     public boolean group() {
         return false;
+    }
+
+    @Override
+    public Integer getId() {
+        return getInstance().userInfo.getId();
+    }
+
+    @Override
+    public Long getTimeMills() {
+        return null;
+    }
+
+    public static void setUserInfo(UserInfo userInfo) {
+        getInstance().userInfo = userInfo;
     }
 
     private Mine() {

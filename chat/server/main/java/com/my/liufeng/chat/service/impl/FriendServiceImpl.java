@@ -1,10 +1,11 @@
 package com.my.liufeng.chat.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.my.liufeng.chat.entity.Friend;
 import com.my.liufeng.chat.mapper.FriendMapper;
 import com.my.liufeng.chat.service.FriendService;
+import com.my.liufeng.chat.util.ContextUtil;
+import com.my.liufeng.chat.util.Wrappers;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +17,13 @@ public class FriendServiceImpl extends ServiceImpl<FriendMapper, Friend> impleme
 
     @Override
     public List<Friend> select(Set<Integer> friendIdList) {
-        QueryWrapper<Friend> queryWrapper = new QueryWrapper<>();
-        queryWrapper.in("id", friendIdList);
-        return list(queryWrapper);
+        Integer userId = ContextUtil.getUserId();
+        List<Friend> list = list(Wrappers.create(Friend.class)
+                .eq("user_id", userId)
+                .in("friend_id", friendIdList));
+        list.addAll(list(Wrappers.create(Friend.class)
+                .eq("friend_id", userId)
+                .in("user_id", friendIdList)));
+        return list;
     }
 }

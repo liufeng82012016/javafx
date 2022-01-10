@@ -15,7 +15,7 @@ public class Message {
     /**
      * 发送人
      */
-    private Integer from;
+    private Integer fromUserId;
     /**
      * 接受人
      */
@@ -45,12 +45,12 @@ public class Message {
         this.id = id;
     }
 
-    public Integer getFrom() {
-        return from;
+    public Integer getFromUserId() {
+        return fromUserId;
     }
 
-    public void setFrom(Integer from) {
-        this.from = from;
+    public void setFromUserId(Integer fromUserId) {
+        this.fromUserId = fromUserId;
     }
 
     public Integer getUserId() {

@@ -7,13 +7,15 @@ import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 import io.netty.util.internal.logging.InternalLogger;
 import io.netty.util.internal.logging.InternalLoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
+@Component
 public class ContextUtil {
     // Spring应用上下文环境
     private static ApplicationContext applicationContext;
+
 
     private static InternalLogger log = InternalLoggerFactory.getInstance(ContextUtil.class);
 
@@ -32,7 +34,6 @@ public class ContextUtil {
         String simpleName = clazz.getSimpleName();
         try {
             System.out.println(String.format("get bean:%s startTime:%s", simpleName, startTime));
-            System.out.println(String.format("get bean:%s beans:%s", simpleName, Arrays.toString(applicationContext.getBeanDefinitionNames())));
             T bean = applicationContext.getBean(clazz);
             System.out.println(String.format("get bean:%s time:%s", simpleName, System.currentTimeMillis() - startTime));
             return bean;
@@ -75,15 +76,10 @@ public class ContextUtil {
         return (Integer) attr.get();
     }
 
-    public static void setApplicationContext(ApplicationContext applicationContext) {
+    @Autowired
+    public  void setApplicationContext(ApplicationContext applicationContext) {
         ContextUtil.applicationContext = applicationContext;
         System.out.println("applicationContext init ==========> ");
     }
-
-
-//    @Override
-//    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-//        applicationContext = configurableListableBeanFactory;
-//    }
 
 }

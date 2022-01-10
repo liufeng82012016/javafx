@@ -16,7 +16,7 @@ public class MessageUI extends TalkPaneComp {
 
     // 更新数据
     public void update() {
-        List<Message> messages = DataManager.messageList.get(DataManager.getSelectedRelation());
+        List<Message> messages = DataManager.getMessageList(DataManager.getSelectedSession());
         messageList.setItems(FXCollections.observableList(messages));
     }
 

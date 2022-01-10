@@ -14,5 +14,13 @@ spring:
     name: fx
   profiles:
     include: datasource
-server:
-  port: 9080
+  data:
+    couchbase:
+      scope-name: singleton
+netty:
+  port: 10030
+
+
+logging:
+  level:
+    root: debug

@@ -4,8 +4,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.my.liufeng.chat.entity.UserInfo;
 import com.my.liufeng.chat.vo.LoginVO;
 
-public interface UserInfoService extends IService<UserInfo> {
-    void login(LoginVO loginVO);
+import java.util.List;
+import java.util.Set;
 
-    void register(LoginVO loginVO);
+public interface UserInfoService extends IService<UserInfo> {
+    UserInfo login(LoginVO loginVO);
+
+    UserInfo register(LoginVO loginVO);
+
+    List<UserInfo> select(Set<Integer> friendIdList);
 }

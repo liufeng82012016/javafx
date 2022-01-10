@@ -1,21 +1,20 @@
 package com.my.liufeng.chat.vo;
 
-import com.my.liufeng.chat.entity.Friend;
 import com.my.liufeng.chat.entity.Group;
 import com.my.liufeng.chat.entity.Message;
 
 import java.util.List;
 
 public class NewMessageVO {
-    private List<Friend> friendList;
+    private List<FriendVO> friendList;
     private List<Group> groupList;
     private List<Message> messageList;
 
-    public List<Friend> getFriendList() {
+    public List<FriendVO> getFriendList() {
         return friendList;
     }
 
-    public void setFriendList(List<Friend> friendList) {
+    public void setFriendList(List<FriendVO> friendList) {
         this.friendList = friendList;
     }
 
