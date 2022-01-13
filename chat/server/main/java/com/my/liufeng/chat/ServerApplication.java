@@ -30,26 +30,24 @@ public class ServerApplication {
 
     @PostConstruct
     public void start() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//                ContextUtil.setApplicationContext(applicationContext);
-                try {
-                    // 设置channel handler链路
-                    ChannelInitializer<SocketChannel> channelInitializer = new ChannelInitializer<SocketChannel>() {
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new CustomDecoder());
-                            ch.pipeline().addLast(new CustomEncoder());
-                            ch.pipeline().addLast(new SimpleHandler());
-                        }
-                    };
-                    // 开启netty服务端
-                    NettyServer nettyServer = new NettyServer(port);
-                    nettyServer.setChannelInitializer(channelInitializer);
-                    nettyServer.start();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+
+        // 新建线程用于netty监听端口，否则可能主应用阻塞
+        new Thread(() -> {
+            try {
+                // 设置channel handler链路
+                ChannelInitializer<SocketChannel> channelInitializer = new ChannelInitializer<SocketChannel>() {
+                    protected void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new CustomDecoder());
+                        ch.pipeline().addLast(new CustomEncoder());
+                        ch.pipeline().addLast(new SimpleHandler());
+                    }
+                };
+                // 开启netty服务端
+                NettyServer nettyServer = new NettyServer(port);
+                nettyServer.setChannelInitializer(channelInitializer);
+                nettyServer.start();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }).start();
 
