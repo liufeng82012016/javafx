@@ -18,6 +18,7 @@ public class RelationUI extends RelationListComp {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // 逻辑处理
             DataManager.setSelectedSession(newValue);
+            // todo 改造，使用数据驱动。right组件注册一个类到DataManager，DataManager数据更新，right通过数据绑定做UI更新
             right.update();
         });
     }

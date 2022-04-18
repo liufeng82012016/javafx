@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <?import com.my.liufeng.ui.component.InputComp?>
@@ -15,7 +13,7 @@
          xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label maxHeight="50.0" maxWidth="600.0" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="600.0"
-               text="Label" BorderPane.alignment="CENTER_LEFT">
+               text="Label" BorderPane.alignment="CENTER_LEFT" fx:id="name">
             <VBox.margin>
                 <Insets left="20.0"/>
             </VBox.margin>
@@ -23,7 +21,7 @@
                 <Font name="System Bold" size="16.0"/>
             </font>
         </Label>
-        <Separator maxHeight="3.0" minHeight="3.0" minWidth="600.0" prefHeight="3.0" prefWidth="600.0"/>
+        <Separator maxHeight="3.0" minHeight="3.0" minWidth="600.0" prefHeight="3.0" prefWidth="600.0" fx:id="sep"/>
         <ListView fx:id="messageList" prefHeight="427.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
         <InputComp fx:id="input"></InputComp>
     </children>

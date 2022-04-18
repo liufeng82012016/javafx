@@ -12,7 +12,7 @@
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
-            <version>8.0.9</version>
+            <version>9.0.10</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx -->
         <dependency>
@@ -20,6 +20,18 @@
             <artifactId>fontawesomefx</artifactId>
             <version>8.9</version>
         </dependency>
+        <!--jbox2d-->
+        <dependency>
+            <artifactId>jbox2d-library</artifactId>
+            <groupId>org.jbox2d</groupId>
+            <version>2.2.1.1</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <artifactId>jbox2d-serialization</artifactId>-->
+<!--            <groupId>org.jbox2d</groupId>-->
+<!--            <version>2.2.1.1</version>-->
+<!--        </dependency>-->
+
 
     </dependencies>
 
@@ -55,8 +67,11 @@
                     <include>**/*.fxml</include>
                     <include>**/fxml/*.fxml</include>
                     <include>**/css/*.css</include>
+                    <include>**/css/*/*.css</include>
                     <include>**/img/*.png</include>
                     <include>**/img/*.jpg</include>
+                    <include>**/img/*.jpeg</include>
+                    <include>**/img/*/*.jpeg</include>
                     <include>**/*.ttf</include>
                     <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->
                     <!-- 之后，使用getResource("fxml/xx.fxml")这样子 -->

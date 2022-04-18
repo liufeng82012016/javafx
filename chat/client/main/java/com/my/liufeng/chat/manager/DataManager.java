@@ -146,7 +146,7 @@ public class DataManager {
                     DefaultFriend defaultFriend = new DefaultFriend(friendVO);
                     DataManager.addSession(defaultFriend);
                     if (friendMap.get(defaultFriend.getId()) != null) {
-                        // 新增会话
+                        // 新增会话，个人
                         DataManager.addSession(defaultFriend);
                     }
                     friendMap.put(defaultFriend.getId(), defaultFriend);
@@ -155,7 +155,7 @@ public class DataManager {
                     DefaultFriend defaultFriend = new DefaultFriend(group);
                     DataManager.addSession(defaultFriend);
                     if (groupMap.get(defaultFriend.getId()) != null) {
-                        // 新增会话
+                        // 新增会话，群组
                         DataManager.addSession(defaultFriend);
                     }
                     groupMap.put(defaultFriend.getId(), defaultFriend);

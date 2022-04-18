@@ -4,31 +4,31 @@ import com.my.liufeng.chat.vo.LoginVO;
 import com.my.liufeng.ui.component.LoginComp;
 import com.my.liufeng.util.Conditions;
 import com.my.liufeng.util.StringUtil;
-import javafx.scene.control.Button;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 
 public class LoginUI extends LoginComp {
+    /**
+     * 计数器，用于切换按钮文案状态
+     */
     private int counter;
 
+    /**
+     * 设置状态为初始状态
+     */
     public void setEnd() {
         counter = 0;
     }
 
+    /**
+     * 设置状态为登录中，防止并发
+     */
     public synchronized boolean setBegin() {
         if (counter == 0) {
             counter = 1;
-//            FadeTransition fadeTransition = new FadeTransition(Duration.millis(3000),login);
-//            fadeTransition.setFromValue(1.0);
-//            fadeTransition.setToValue(0.3);
-//            fadeTransition.setCycleCount(4);
-//            fadeTransition.setAutoReverse(true);
-//            fadeTransition.play();
             return true;
         }
         return false;
-    }
-
-    public Button getLogin() {
-        return login;
     }
 
     /**
@@ -55,5 +55,17 @@ public class LoginUI extends LoginComp {
         loginVO.setPassword(pwd.getText());
         Conditions.expectFalse(StringUtil.isBlank(loginVO.getPassword()), "请输入密码");
         return loginVO;
+    }
+
+    /**
+     * 暴露按钮点击事件
+     */
+    public void setLoginAction(EventHandler<Event> eventHandler) {
+        login.setOnMouseClicked(eventHandler);
+        login.setOnKeyPressed(eventHandler);
+    }
+
+    public void addEnterHandler(EventHandler<Event> eventHandler){
+        login.setOnKeyPressed(eventHandler);
     }
 }

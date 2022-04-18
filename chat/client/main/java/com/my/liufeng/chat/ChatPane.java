@@ -29,7 +29,7 @@ public class ChatPane extends HBox {
         ObservableList<Message> messages = defaultFriends == null || defaultFriends.isEmpty() ? FXCollections.emptyObservableList() :
                 DataManager.getMessageList(defaultFriends.get(0));
         relationUI = new RelationUI(defaultFriends);
-        messageUI = new MessageUI(messages);
+        messageUI = new MessageUI(null);
         relationUI.setOnSelect(messageUI);
         relationUI.setOnAdd();
 
@@ -39,7 +39,14 @@ public class ChatPane extends HBox {
         separator.setMaxWidth(1);
         separator.setOpacity(0.5);
 
-        this.getChildren().addAll(new ToolUI(this), relationUI, separator, messageUI);
+        Separator separator2 = new Separator();
+        separator2.setOrientation(Orientation.VERTICAL);
+        separator2.setMinWidth(1);
+        separator2.setMaxWidth(1);
+        separator2.setOpacity(0.5);
+
+
+        this.getChildren().addAll(new ToolUI(this),separator2, relationUI, separator, messageUI);
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {

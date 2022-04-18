@@ -15,12 +15,12 @@
 <fx:root fx:id="root" prefHeight="500.0" prefWidth="400.0" type="javafx.scene.layout.VBox"
          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TextField fx:id="username" prefHeight="30">
+        <TextField fx:id="username" prefHeight="30" promptText="请输入账号">
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="300.0"/>
             </VBox.margin>
         </TextField>
-        <PasswordField fx:id="pwd" prefHeight="30">
+        <PasswordField fx:id="pwd" prefHeight="30" promptText="请输入密码">
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0"/>
             </VBox.margin>

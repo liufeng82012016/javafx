@@ -4,8 +4,10 @@ import com.my.liufeng.ui.model.Message;
 import com.my.liufeng.ui.util.FxUtils;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -21,12 +23,17 @@ public abstract class TalkPaneComp extends VBox {
     protected ListView<Message> messageList;
     @FXML
     protected InputComp input;
+    @FXML
+    protected Label name;
+    @FXML
+    protected Separator sep;
 
 
-    public TalkPaneComp(List<Message> messages) {
+    public TalkPaneComp(List<Message> messages, String friendName) {
         FxUtils.load(this, "fxml/TalkPane.fxml");
         messageList.getItems().addAll(messages);
         messageList.scrollTo(messageList.getItems().size());
+        name.setText(friendName);
         // 设置渲染
         messageList.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>() {
             @Override
