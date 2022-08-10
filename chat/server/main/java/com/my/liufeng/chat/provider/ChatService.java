@@ -2,6 +2,7 @@ package com.my.liufeng.chat.provider;
 
 import com.my.liufeng.chat.entity.Friend;
 import com.my.liufeng.chat.entity.Message;
+import com.my.liufeng.chat.service.FriendService;
 import com.my.liufeng.chat.service.MessageService;
 import com.my.liufeng.chat.vo.MessageQueryVO;
 import com.my.liufeng.chat.vo.NewMessageVO;
@@ -10,10 +11,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 提供聊天相关服务
+ *
+ * @author liufeng
+ */
 @Component
 public class ChatService extends HeartService {
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private FriendService friendService;
 
     /**
      * 好友列表
@@ -50,5 +58,14 @@ public class ChatService extends HeartService {
      */
     public NewMessageVO messageList(MessageQueryVO messageQueryVO) {
         return messageService.messageList(messageQueryVO);
+    }
+
+    /**
+     * 添加好友
+     *
+     * @param id 好友id
+     */
+    public void addFriend(Integer id) {
+        friendService.add(id);
     }
 }

@@ -1,5 +1,10 @@
 package com.my.liufeng.chat.constants;
 
+/**
+ * 常量类
+ *
+ * @author liufeng
+ */
 public interface Constants {
     // -----------------------  错误提示  -----------------------
     String CHANNEL_NULL = "非法请求";

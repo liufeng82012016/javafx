@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
 
+/**
+ * 提供用户、账户相关服务
+ *
+ * @author liufeng
+ */
 @Component
 public class UserService extends HeartService {
     @Autowired

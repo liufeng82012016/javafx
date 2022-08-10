@@ -1,5 +1,11 @@
 package com.my.liufeng.chat.enums;
 
+/**
+ * 用于接口全县控制
+ *
+ * @author liufeng
+ */
+
 public enum Permission {
     /**
      * 免登录访问

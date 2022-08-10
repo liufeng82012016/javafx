@@ -10,6 +10,11 @@ import javafx.collections.FXCollections;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 消息框实现
+ *
+ * @author liufeng
+ */
 public class MessageUI extends TalkPaneComp {
     // todo 消息也许可以使用flowPane实现
 
@@ -25,7 +30,9 @@ public class MessageUI extends TalkPaneComp {
         }
     }
 
-    // 更新数据
+    /**
+     * 更新数据
+     */
     public void update() {
         List<Message> messages = DataManager.getMessageList(DataManager.getSelectedSession());
         messageList.setItems(FXCollections.observableList(messages));

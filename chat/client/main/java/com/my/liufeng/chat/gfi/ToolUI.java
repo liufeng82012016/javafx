@@ -14,6 +14,11 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 
+/**
+ * 工具栏ui实现
+ *
+ * @author liufeng
+ */
 public class ToolUI extends VBox {
     private Node parent;
     @FXML

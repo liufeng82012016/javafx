@@ -5,7 +5,13 @@ import com.my.liufeng.ui.component.RelationListComp;
 import com.my.liufeng.ui.model.Relation;
 import javafx.collections.ObservableList;
 
+/**
+ * 好友列表实现
+ *
+ * @author liufeng
+ */
 public class RelationUI extends RelationListComp {
+
     public RelationUI(ObservableList<Relation> relations) {
         super(relations);
     }

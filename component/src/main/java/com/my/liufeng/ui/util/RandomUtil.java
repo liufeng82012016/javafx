@@ -2,6 +2,11 @@ package com.my.liufeng.ui.util;
 
 import java.util.Random;
 
+/**
+ * 自定义随机工具类
+ *
+ * @author liufeng
+ */
 public class RandomUtil {
     private static final Random random = new Random();
     private static char[] chars = new char[62];

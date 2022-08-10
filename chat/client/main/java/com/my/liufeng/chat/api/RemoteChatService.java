@@ -39,4 +39,11 @@ public interface RemoteChatService {
      * @return 消息列表
      */
     NewMessageVO messageList(MessageQueryVO messageQueryVO);
+
+    /**
+     * 添加好友
+     *
+     * @param id 好友id
+     */
+    void addFriend(Integer id);
 }

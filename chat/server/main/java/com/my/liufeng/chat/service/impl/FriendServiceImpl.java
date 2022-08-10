@@ -26,4 +26,19 @@ public class FriendServiceImpl extends ServiceImpl<FriendMapper, Friend> impleme
                 .in("user_id", friendIdList)));
         return list;
     }
+
+    @Override
+    public void add(Integer id) {
+        Integer userId = ContextUtil.getUserId();
+        Friend friend = getOne(Wrappers.create(Friend.class)
+                .eq("user_id", Math.min(id, userId))
+                .eq("friend_id", Math.max(id, userId)));
+        if (friend != null) {
+            return;
+        }
+        friend = new Friend();
+        friend.setUserId(Math.min(id, userId));
+        friend.setFriendId(Math.max(id, userId));
+        save(friend);
+    }
 }

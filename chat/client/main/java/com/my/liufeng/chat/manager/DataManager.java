@@ -21,9 +21,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 管理客户端数据，提供crud方法
+ * todo 使用观察者模式，双向绑定刷新数据
+ * @author liufeng
  */
 public class DataManager {
-    private static InternalLogger log = InternalLoggerFactory.getInstance(ClientApplication.class);
+    private static final InternalLogger log = InternalLoggerFactory.getInstance(ClientApplication.class);
 
     /**
      * 会话信息

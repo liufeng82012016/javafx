@@ -1,5 +1,6 @@
 package com.my.liufeng.chat.handler;
 
+import com.alibaba.fastjson.JSON;
 import com.my.liufeng.chat.constants.StaticConstants;
 import com.my.liufeng.rpc.enums.RpcMessageType;
 import com.my.liufeng.rpc.model.RpcResponse;
@@ -13,9 +14,11 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * 客户端handler，负责反序列化服务器返回值
+ *
+ * @author liufeng
  */
 public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
-    private static InternalLogger logger = InternalLoggerFactory.getInstance(SimpleClientHandler.class);
+    private static final InternalLogger logger = InternalLoggerFactory.getInstance(SimpleClientHandler.class);
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -24,13 +27,14 @@ public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
             logger.warn("client receive msg: {} ", msg.getClass().getSimpleName());
             return;
         }
+        // 读取响应
         RpcResponse response = (RpcResponse) msg;
+        logger.info("response：{}", JSON.toJSONString(response));
         if (response.getType() == RpcMessageType.TYPE_RESPONSE.getType()) {
             CompletableFuture future = (CompletableFuture) ctx.channel().attr(AttributeKey.valueOf(response.getRequestId())).getAndSet(null);
             future.complete(response);
         } else if (response.getType() == StaticConstants.RPC_TYPE_MSG) {
             // 收到推送消息
-
         }
     }
 

@@ -8,4 +8,11 @@ import java.util.Set;
 
 public interface FriendService extends IService<Friend> {
     List<Friend> select(Set<Integer> friendIdList);
+
+    /**
+     * 添加好友
+     *
+     * @param id 好友id
+     */
+    void add(Integer id);
 }

@@ -17,6 +17,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+/**
+ * 服务端启动
+ *
+ * @author liufeng
+ */
 @MapperScan(value = "com.my.liufeng.chat.mapper")
 @SpringBootApplication(scanBasePackages = {"com.my.liufeng.chat"})
 @EnableTransactionManagement
@@ -36,6 +41,7 @@ public class ServerApplication {
             try {
                 // 设置channel handler链路
                 ChannelInitializer<SocketChannel> channelInitializer = new ChannelInitializer<SocketChannel>() {
+                    @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new CustomDecoder());
                         ch.pipeline().addLast(new CustomEncoder());
@@ -58,12 +64,6 @@ public class ServerApplication {
         SpringApplication.run(ServerApplication.class, args);
 
     }
-
-//    @Bean(name = "transactionManager")
-//    public DataSourceTransactionManager transactionManager() {
-//        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-//        return transactionManager;
-//    }
 
 
 }

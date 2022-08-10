@@ -4,8 +4,6 @@ import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.FxUtils;
 import com.my.liufeng.ui.util.ObjectUtils;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,7 +36,6 @@ public abstract class RelationListComp extends VBox {
         // 加在fxml
         FxUtils.load(this, "fxml/RelationList.fxml");
         // 添加底部列表
-//        listView.getItems().addAll(relations);
         listView.itemsProperty().bindBidirectional(new SimpleListProperty<>(relations));
         // 设置渲染
         listView.setCellFactory(new Callback<ListView<Relation>, ListCell<Relation>>() {
@@ -74,12 +71,7 @@ public abstract class RelationListComp extends VBox {
             listView.setItems(FXCollections.observableList(collect));
         });
         // 监听选项
-        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Relation>() {
-            @Override
-            public void changed(ObservableValue<? extends Relation> observable, Relation oldValue, Relation newValue) {
-                selected = newValue;
-            }
-        });
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> selected = newValue);
     }
 
     /**

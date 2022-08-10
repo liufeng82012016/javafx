@@ -7,6 +7,11 @@ import com.my.liufeng.util.StringUtil;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
+/**
+ * 登陆页面ui实现
+ *
+ * @author liufeng
+ */
 public class LoginUI extends LoginComp {
     /**
      * 计数器，用于切换按钮文案状态
@@ -65,7 +70,7 @@ public class LoginUI extends LoginComp {
         login.setOnKeyPressed(eventHandler);
     }
 
-    public void addEnterHandler(EventHandler<Event> eventHandler){
+    public void addEnterHandler(EventHandler<Event> eventHandler) {
         login.setOnKeyPressed(eventHandler);
     }
 }

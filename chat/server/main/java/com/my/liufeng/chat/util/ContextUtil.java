@@ -13,18 +13,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ContextUtil {
-    // Spring应用上下文环境
+    /**
+     * Spring 上下文
+     */
     private static ApplicationContext applicationContext;
 
 
     private static InternalLogger log = InternalLoggerFactory.getInstance(ContextUtil.class);
 
-    // 用户信息上下文
+    /**
+     * 用户信息上下文
+     */
     private static ThreadLocal<Channel> userContext = new ThreadLocal<>();
 
-    /**
-     * set 上下文
-     */
 
     /**
      * 获取bean
@@ -33,9 +34,13 @@ public class ContextUtil {
         long startTime = System.currentTimeMillis();
         String simpleName = clazz.getSimpleName();
         try {
-            System.out.println(String.format("get bean:%s startTime:%s", simpleName, startTime));
+            if (log.isDebugEnabled()) {
+                log.debug("get bean:{} startTime:{}", simpleName, startTime);
+            }
             T bean = applicationContext.getBean(clazz);
-            System.out.println(String.format("get bean:%s time:%s", simpleName, System.currentTimeMillis() - startTime));
+            if (log.isDebugEnabled()) {
+                log.debug("get bean:{} time:{}", simpleName, System.currentTimeMillis() - startTime);
+            }
             return bean;
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +82,7 @@ public class ContextUtil {
     }
 
     @Autowired
-    public  void setApplicationContext(ApplicationContext applicationContext) {
+    public void setApplicationContext(ApplicationContext applicationContext) {
         ContextUtil.applicationContext = applicationContext;
         System.out.println("applicationContext init ==========> ");
     }

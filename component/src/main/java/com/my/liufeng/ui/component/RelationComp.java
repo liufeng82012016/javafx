@@ -2,8 +2,6 @@ package com.my.liufeng.ui.component;
 
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.ui.util.FxUtils;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,6 +11,8 @@ import javafx.scene.layout.VBox;
 
 /**
  * 联系人
+ *
+ * @author liufeng
  */
 public class RelationComp extends HBox {
     @FXML
@@ -36,13 +36,9 @@ public class RelationComp extends HBox {
         title.setText(item.getTitle());
         time.setText(item.getTime());
         content.setText(item.getContent());
+        System.out.println("new RelationComp:" + item.getIcon());
         avatar.setImage(new Image(item.getIcon(), avatar.getFitWidth(), avatar.getFitHeight(), true, true));
 
-        hBox.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                title.setPrefWidth(newValue.doubleValue() - 85);
-            }
-        });
+        hBox.widthProperty().addListener((observable, oldValue, newValue) -> title.setPrefWidth(newValue.doubleValue() - 85));
     }
 }

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.my.liufeng.chat.constants.Constants;
 import com.my.liufeng.chat.context.UserManager;
 import com.my.liufeng.chat.entity.Friend;
+import com.my.liufeng.chat.entity.Group;
 import com.my.liufeng.chat.entity.Message;
 import com.my.liufeng.chat.entity.UserInfo;
 import com.my.liufeng.chat.mapper.MessageMapper;
@@ -47,35 +48,40 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
                 .last(" limit 100");
         // 组装好友列表和群组列表
         List<Message> messageList = list(queryWrapper);
-        if (CollectionUtil.isNotEmpty(messageList)) {
-            Set<Integer> groupIdList = new HashSet<>();
-            Set<Integer> friendIdList = new HashSet<>();
-            messageList.forEach(message -> {
-                if (message.getGroupId() != null) {
-                    groupIdList.add(message.getGroupId());
-                }
-                friendIdList.add(message.getFromUserId());
-            });
-            List<Friend> friends = friendService.select(friendIdList);
-            Map<Integer, String> idAndNicknameMap = new HashMap<>(friends.size());
-            friends.forEach(friend -> {
-                if (userId.equals(friend.getUserId())) {
-                    idAndNicknameMap.put(friend.getFriendId(), friend.getNickname1());
-                } else {
-                    idAndNicknameMap.put(friend.getUserId(), friend.getNickname2());
-                }
-            });
-            List<UserInfo> userInfos = userInfoService.select(friendIdList);
-            List<FriendVO> friendVOS = userInfos.stream().map(userInfo -> {
-                FriendVO friendVO = new FriendVO();
-                friendVO.setAvatar(userInfo.getAvatar());
-                friendVO.setNickname(idAndNicknameMap.get(userInfo.getId()));
-                friendVO.setId(userInfo.getId());
-                return friendVO;
-            }).collect(Collectors.toList());
-            newMessageVO.setFriendList(friendVOS);
-            newMessageVO.setGroupList(groupService.select(groupIdList));
+        if (CollectionUtil.isEmpty(messageList)) {
+            System.out.println("user[{" + userId + "}]消息为空");
+            return newMessageVO;
         }
+        Set<Integer> groupIdList = new HashSet<>();
+        Set<Integer> friendIdList = new HashSet<>();
+        messageList.forEach(message -> {
+            if (message.getGroupId() != null) {
+                groupIdList.add(message.getGroupId());
+            }
+            friendIdList.add(message.getFromUserId());
+        });
+        List<Friend> friends = friendService.select(friendIdList);
+        Map<Integer, String> idAndNicknameMap = new HashMap<>(friends.size());
+        friends.forEach(friend -> {
+            if (userId.equals(friend.getUserId())) {
+                idAndNicknameMap.put(friend.getFriendId(), friend.getNickname1());
+            } else {
+                idAndNicknameMap.put(friend.getUserId(), friend.getNickname2());
+            }
+        });
+        // 查询好友列表
+        List<UserInfo> userInfos = userInfoService.select(friendIdList);
+        List<FriendVO> friendVOS = userInfos.stream().map(userInfo -> {
+            FriendVO friendVO = new FriendVO();
+            friendVO.setAvatar(userInfo.getAvatar());
+            friendVO.setNickname(idAndNicknameMap.get(userInfo.getId()));
+            friendVO.setId(userInfo.getId());
+            return friendVO;
+        }).collect(Collectors.toList());
+        newMessageVO.setFriendList(friendVOS);
+        List<Group> groupList = CollectionUtil.isEmpty(groupIdList) ? Collections.emptyList() : groupService.select(groupIdList);
+        newMessageVO.setGroupList(groupList);
+        newMessageVO.setMessageList(messageList);
         return newMessageVO;
     }
 

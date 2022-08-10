@@ -3,6 +3,11 @@ package com.my.liufeng.chat.uipj;
 import com.my.liufeng.chat.entity.UserInfo;
 import com.my.liufeng.ui.model.Relation;
 
+/**
+ * 我的信息
+ *
+ * @author liufeng
+ */
 public class Mine implements Relation {
     private UserInfo userInfo;
 
@@ -54,6 +59,6 @@ public class Mine implements Relation {
     }
 
     private static class MineInstance {
-        private static Mine mine = new Mine();
+        private static final Mine mine = new Mine();
     }
 }

@@ -1,5 +1,6 @@
 package com.my.liufeng.chat.handler;
 
+import com.alibaba.fastjson.JSON;
 import com.my.liufeng.chat.annotation.RequirePermission;
 import com.my.liufeng.chat.constants.Constants;
 import com.my.liufeng.chat.enums.Permission;
@@ -18,6 +19,7 @@ import java.lang.reflect.Method;
  * 登录注册校验
  */
 public class SimpleHandler extends ChannelInboundHandlerAdapter {
+    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
         // 解析请求参数
@@ -62,8 +64,8 @@ public class SimpleHandler extends ChannelInboundHandlerAdapter {
         } finally {
             ContextUtil.removeChannel();
             ctx.channel().writeAndFlush(rpcResponse);
-            System.out.println(String.format("receive:%s \n response:%s time:%s", rpcRequest.toString(),
-                    rpcResponse.toString(), (System.currentTimeMillis() - startTime)));
+            System.out.println(String.format("receive:%s \nresponse:%s time:%s", JSON.toJSONString(rpcRequest),
+                    JSON.toJSONString(rpcResponse), (System.currentTimeMillis() - startTime)));
         }
 
     }

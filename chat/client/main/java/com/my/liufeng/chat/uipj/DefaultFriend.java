@@ -5,6 +5,10 @@ import com.my.liufeng.chat.vo.FriendVO;
 import com.my.liufeng.ui.model.Relation;
 import com.my.liufeng.util.DateUtil;
 
+/**
+ * 好友列表
+ * @author liufeng
+ */
 public class DefaultFriend implements Relation {
     private FriendVO friend;
     private Group group;

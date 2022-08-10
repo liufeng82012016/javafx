@@ -2,6 +2,11 @@ package com.my.liufeng.chat.uipj;
 
 import com.my.liufeng.ui.model.Message;
 
+/**
+ * 消息
+ *
+ * @author liufeng
+ */
 public class RealMessage implements Message {
     private com.my.liufeng.chat.entity.Message message;
     private String nickname;

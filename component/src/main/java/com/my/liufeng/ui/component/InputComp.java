@@ -22,14 +22,6 @@ public class InputComp extends VBox {
      */
     public InputComp() {
         FxUtils.load(this, "fxml/InputComp.fxml");
-//        textArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                if (KeyCode.ENTER == event.getCode()) {
-//                    System.out.println("enter press");
-//                }
-//            }
-//        });
     }
 
     /**

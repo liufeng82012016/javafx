@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 模拟服务提供者
+ *
+ * @author liufeng
  */
 @Component
 public class HelloService {
@@ -15,10 +17,6 @@ public class HelloService {
 
 
     public Heart ping() {
-//        UserInfo userInfo = new UserInfo();
-//        userInfo.setId(1);
-//        userInfo.setNickname("one");
-//        userInfoService.saveOrUpdate(userInfo);
         return new Heart();
     }
 }

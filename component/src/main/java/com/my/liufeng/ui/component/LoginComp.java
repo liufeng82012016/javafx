@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 
 /**
  * 登录窗口
+ *
+ * @author liufeng
  */
 public class LoginComp extends VBox {
     @FXML

@@ -9,7 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * 聊天消息
+ * 聊天消息列表
+ * @author liufeng
  */
 public class MessageComp extends HBox {
     private ImageView avatar;
