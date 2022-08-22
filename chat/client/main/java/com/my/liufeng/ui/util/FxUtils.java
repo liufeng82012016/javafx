@@ -5,10 +5,16 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * 自定义JavaFX工具类
+ *
+ * @author liufeng
+ */
 public class FxUtils {
     /**
      * 加载fxml
@@ -28,7 +34,17 @@ public class FxUtils {
         }
     }
 
+    /**
+     * 设置某个节点点击事件
+     *
+     * @param node    节点
+     * @param handler 事件处理器
+     */
     public static void setKeyPressed(Node node, EventHandler<KeyEvent> handler) {
         node.setOnKeyPressed(handler);
+    }
+
+    public static void setMousePressed(Node node, EventHandler<MouseEvent> handler) {
+        node.setOnMouseClicked(handler);
     }
 }

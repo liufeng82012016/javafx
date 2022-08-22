@@ -9,8 +9,8 @@ import com.my.liufeng.chat.util.ThreadPoolUtil;
 import com.my.liufeng.chat.vo.NewMessageVO;
 import com.my.liufeng.rpc.context.MethodProxyRepository;
 import com.my.liufeng.rpc.utils.CollectionUtil;
-import com.my.liufeng.ui.model.Message;
-import com.my.liufeng.ui.model.Relation;
+import com.my.liufeng.ui.model.UiMessage;
+import com.my.liufeng.ui.model.UiRelation;
 import io.netty.util.internal.logging.InternalLogger;
 import io.netty.util.internal.logging.InternalLoggerFactory;
 import javafx.collections.FXCollections;
@@ -30,15 +30,15 @@ public class DataManager {
     /**
      * 会话信息
      */
-    private static ObservableList<Relation> sessions = FXCollections.observableList(new LinkedList<>());
+    private static ObservableList<UiRelation> sessions = FXCollections.observableList(new LinkedList<>());
     /**
      * 会话消息
      */
-    private static Map<Relation, ObservableList<Message>> messageListMap = new HashMap<>();
+    private static Map<UiRelation, ObservableList<UiMessage>> messageListMap = new HashMap<>();
     /**
      * 好友列表
      */
-    private static ObservableList<Relation> friend;
+    private static ObservableList<UiRelation> friend;
     /**
      * 我的信息
      */
@@ -52,11 +52,11 @@ public class DataManager {
      */
     public static Integer viewId;
 
-    public static ObservableList<Relation> getSessions() {
+    public static ObservableList<UiRelation> getSessions() {
         return sessions;
     }
 
-    public static ObservableList<Relation> getFriend() {
+    public static ObservableList<UiRelation> getFriend() {
         return friend;
     }
 
@@ -72,7 +72,7 @@ public class DataManager {
         return selectedDefaultFriend;
     }
 
-    public static void setSelectedSession(Relation relation) {
+    public static void setSelectedSession(UiRelation relation) {
         DataManager.selectedDefaultFriend = (DefaultFriend) relation;
     }
 
@@ -84,23 +84,23 @@ public class DataManager {
         DataManager.viewId = viewId;
     }
 
-    public static ObservableList<Message> getMessageList(Relation defaultFriend) {
+    public static ObservableList<UiMessage> getMessageList(UiRelation defaultFriend) {
         return messageListMap.computeIfAbsent(defaultFriend, k -> FXCollections.observableList(new LinkedList<>()));
     }
 
-    public static void addSessions(Collection<Relation> defaultFriend) {
+    public static void addSessions(Collection<UiRelation> defaultFriend) {
         sessions.addAll(defaultFriend);
     }
 
-    public static void addSession(Relation defaultFriend) {
+    public static void addSession(UiRelation defaultFriend) {
         sessions.addAll(defaultFriend);
     }
 
-    public static void addMessages(Relation defaultFriend, Collection<Message> messages) {
+    public static void addMessages(UiRelation defaultFriend, Collection<UiMessage> messages) {
         getMessageList(defaultFriend).addAll(messages);
     }
 
-    public static void addMessage(Relation relation, Message message) {
+    public static void addMessage(UiRelation relation, UiMessage message) {
         getMessageList(relation).add(message);
         DefaultFriend defaultFriend = (DefaultFriend) relation;
         Long mills = defaultFriend.getMills();
@@ -134,8 +134,8 @@ public class DataManager {
                 if (CollectionUtil.isEmpty(newMessageVO.getFriendList())) {
                     return;
                 }
-                Map<Integer, Relation> friendMap = new HashMap<>();
-                Map<Integer, Relation> groupMap = new HashMap<>();
+                Map<Integer, UiRelation> friendMap = new HashMap<>();
+                Map<Integer, UiRelation> groupMap = new HashMap<>();
                 DataManager.getSessions().forEach(relation -> {
                     if (relation.group()) {
                         groupMap.put(relation.getId(), relation);
@@ -166,8 +166,8 @@ public class DataManager {
                 List<com.my.liufeng.chat.entity.Message> messageList = newMessageVO.getMessageList();
                 messageList.forEach(message -> {
                     Integer groupId = message.getGroupId();
-                    Relation from = friendMap.get(message.getFromUserId());
-                    Relation relation = groupId > 0 ? groupMap.get(groupId) : from;
+                    UiRelation from = friendMap.get(message.getFromUserId());
+                    UiRelation relation = groupId > 0 ? groupMap.get(groupId) : from;
                     if (relation == null || from == null) {
                         log.warn("message from lost. groupId=[{}] from=[{}]", groupId, message.getFromUserId());
                         return;

@@ -3,7 +3,7 @@ package com.my.liufeng.chat.gfi;
 import com.my.liufeng.chat.manager.DataManager;
 import com.my.liufeng.chat.model.MessageObject;
 import com.my.liufeng.ui.component.TalkPaneComp;
-import com.my.liufeng.ui.model.Message;
+import com.my.liufeng.ui.model.UiMessage;
 import com.my.liufeng.ui.util.ObjectUtils;
 import javafx.collections.FXCollections;
 
@@ -34,7 +34,7 @@ public class MessageUI extends TalkPaneComp {
      * 更新数据
      */
     public void update() {
-        List<Message> messages = DataManager.getMessageList(DataManager.getSelectedSession());
+        List<UiMessage> messages = DataManager.getMessageList(DataManager.getSelectedSession());
         messageList.setItems(FXCollections.observableList(messages));
     }
 

@@ -1,5 +1,9 @@
 package com.my.liufeng.ui.util;
 
+/**
+ * 自定义工具类
+ * @author liufeng
+ */
 public class ObjectUtils {
     /**
      * 判断对象是否为空，为空返回默认值

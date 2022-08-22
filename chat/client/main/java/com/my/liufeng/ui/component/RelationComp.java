@@ -1,6 +1,6 @@
 package com.my.liufeng.ui.component;
 
-import com.my.liufeng.ui.model.Relation;
+import com.my.liufeng.ui.model.UiRelation;
 import com.my.liufeng.ui.util.FxUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,7 +29,7 @@ public class RelationComp extends HBox {
     private VBox vBox;
 
 
-    public RelationComp(Relation item) {
+    public RelationComp(UiRelation item) {
         // 加载fxml
         FxUtils.load(this, "fxml/Relation.fxml");
         // 填充数据

@@ -1,6 +1,6 @@
 package com.my.liufeng.ui.component;
 
-import com.my.liufeng.ui.model.Relation;
+import com.my.liufeng.ui.model.UiRelation;
 import com.my.liufeng.ui.util.FxUtils;
 import com.my.liufeng.ui.util.ObjectUtils;
 import javafx.beans.property.SimpleListProperty;
@@ -23,27 +23,27 @@ import java.util.stream.Collectors;
  */
 public abstract class RelationListComp extends VBox {
     @FXML
-    protected ListView<Relation> listView;
+    protected ListView<UiRelation> listView;
     @FXML
     protected TextField searchField;
     @FXML
     protected Label plus;
 
-    private Relation selected;
+    private UiRelation selected;
 
 
-    public RelationListComp(ObservableList<Relation> relations) {
+    public RelationListComp(ObservableList<UiRelation> relations) {
         // 加在fxml
         FxUtils.load(this, "fxml/RelationList.fxml");
         // 添加底部列表
         listView.itemsProperty().bindBidirectional(new SimpleListProperty<>(relations));
         // 设置渲染
-        listView.setCellFactory(new Callback<ListView<Relation>, ListCell<Relation>>() {
+        listView.setCellFactory(new Callback<ListView<UiRelation>, ListCell<UiRelation>>() {
             @Override
-            public ListCell<Relation> call(ListView<Relation> param) {
-                ListCell<Relation> item = new ListCell<Relation>() {
+            public ListCell<UiRelation> call(ListView<UiRelation> param) {
+                ListCell<UiRelation> item = new ListCell<UiRelation>() {
                     @Override
-                    protected void updateItem(Relation item, boolean empty) {
+                    protected void updateItem(UiRelation item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
@@ -59,7 +59,7 @@ public abstract class RelationListComp extends VBox {
         searchField.setFocusTraversable(false);
         // 搜索事件
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            List<Relation> collect;
+            List<UiRelation> collect;
             if (ObjectUtils.isBlank(newValue)) {
                 collect = relations;
             } else {
@@ -77,7 +77,7 @@ public abstract class RelationListComp extends VBox {
     /**
      * 获取所选项
      */
-    public Relation getSelected() {
+    public UiRelation getSelected() {
         return selected;
     }
 }

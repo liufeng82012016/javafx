@@ -1,13 +1,13 @@
 package com.my.liufeng.chat.uipj;
 
-import com.my.liufeng.ui.model.Message;
+import com.my.liufeng.ui.model.UiMessage;
 
 /**
  * 消息
  *
  * @author liufeng
  */
-public class RealMessage implements Message {
+public class RealMessage implements UiMessage {
     private com.my.liufeng.chat.entity.Message message;
     private String nickname;
     private String avatar;

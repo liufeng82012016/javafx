@@ -1,6 +1,6 @@
 package com.my.liufeng.ui.component;
 
-import com.my.liufeng.ui.model.Message;
+import com.my.liufeng.ui.model.UiMessage;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,7 +18,7 @@ public class MessageComp extends HBox {
     private Label nickname;
     private VBox vBox;
 
-    public MessageComp(Message item) {
+    public MessageComp(UiMessage item) {
         // 添加css
         this.getStylesheets().add("css/Message.css");
         this.setId("root");

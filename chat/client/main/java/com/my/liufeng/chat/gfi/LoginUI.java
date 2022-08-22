@@ -1,5 +1,6 @@
 package com.my.liufeng.chat.gfi;
 
+import com.my.liufeng.chat.gfi.handler.EventHandlerFactory;
 import com.my.liufeng.chat.vo.LoginVO;
 import com.my.liufeng.ui.component.LoginComp;
 import com.my.liufeng.util.Conditions;
@@ -13,6 +14,11 @@ import javafx.event.EventHandler;
  * @author liufeng
  */
 public class LoginUI extends LoginComp {
+
+    public LoginUI() {
+        this.setLoginAction(EventHandlerFactory.getLoginEventHandler(this));
+    }
+
     /**
      * 计数器，用于切换按钮文案状态
      */
@@ -49,6 +55,7 @@ public class LoginUI extends LoginComp {
     public boolean isLogin() {
         return "登录".equals(login.getText());
     }
+
 
     /**
      * 获取文本内容

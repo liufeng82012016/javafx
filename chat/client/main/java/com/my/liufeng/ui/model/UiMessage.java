@@ -1,6 +1,10 @@
 package com.my.liufeng.ui.model;
 
-public interface Message {
+/**
+ * 聊天消息实体类
+ * @author liufeng
+ */
+public interface UiMessage {
     /**
      * 获取昵称
      */
@@ -26,5 +30,8 @@ public interface Message {
      */
     boolean group();
 
+    /**
+     * 更新时间
+     */
     long time();
 }

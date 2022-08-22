@@ -2,7 +2,7 @@ package com.my.liufeng.chat.gfi;
 
 import com.my.liufeng.chat.manager.DataManager;
 import com.my.liufeng.ui.component.RelationListComp;
-import com.my.liufeng.ui.model.Relation;
+import com.my.liufeng.ui.model.UiRelation;
 import javafx.collections.ObservableList;
 
 /**
@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
  */
 public class RelationUI extends RelationListComp {
 
-    public RelationUI(ObservableList<Relation> relations) {
+    public RelationUI(ObservableList<UiRelation> relations) {
         super(relations);
     }
 

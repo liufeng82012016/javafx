@@ -13,12 +13,6 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
-        <!-- javafx 图形界面-->
-        <dependency>
-            <groupId>com.my.liufeng</groupId>
-            <artifactId>component</artifactId>
-            <version>0.0.1</version>
-        </dependency>
 
         <!-- 网络请求-->
         <dependency>

@@ -1,6 +1,6 @@
 package com.my.liufeng.ui.component;
 
-import com.my.liufeng.ui.model.Message;
+import com.my.liufeng.ui.model.UiMessage;
 import com.my.liufeng.ui.util.FxUtils;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public abstract class TalkPaneComp extends VBox {
     @FXML
-    protected ListView<Message> messageList;
+    protected ListView<UiMessage> messageList;
     @FXML
     protected InputComp input;
     @FXML
@@ -29,18 +29,18 @@ public abstract class TalkPaneComp extends VBox {
     protected Separator sep;
 
 
-    public TalkPaneComp(List<Message> messages, String friendName) {
+    public TalkPaneComp(List<UiMessage> messages, String friendName) {
         FxUtils.load(this, "fxml/TalkPane.fxml");
         messageList.getItems().addAll(messages);
         messageList.scrollTo(messageList.getItems().size());
         name.setText(friendName);
         // 设置渲染
-        messageList.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>() {
+        messageList.setCellFactory(new Callback<ListView<UiMessage>, ListCell<UiMessage>>() {
             @Override
-            public ListCell<Message> call(ListView<Message> param) {
-                return new ListCell<Message>() {
+            public ListCell<UiMessage> call(ListView<UiMessage> param) {
+                return new ListCell<UiMessage>() {
                     @Override
-                    protected void updateItem(Message item1, boolean empty) {
+                    protected void updateItem(UiMessage item1, boolean empty) {
                         super.updateItem(item1, empty);
                         if (empty) {
                             setGraphic(null);
@@ -64,8 +64,8 @@ public abstract class TalkPaneComp extends VBox {
     /**
      * 添加信息
      */
-    public void addMessage(Message message) {
-        ObservableList<Message> items = messageList.getItems();
+    public void addMessage(UiMessage message) {
+        ObservableList<UiMessage> items = messageList.getItems();
         items.add(message);
         // 自动滚动到底部
         messageList.scrollTo(items.size());

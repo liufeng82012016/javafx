@@ -2,8 +2,8 @@ package com.my.liufeng.chat.gfi;
 
 import com.my.liufeng.chat.manager.DataManager;
 import com.my.liufeng.chat.uipj.Mine;
-import com.my.liufeng.ui.model.Message;
-import com.my.liufeng.ui.model.Relation;
+import com.my.liufeng.ui.model.UiMessage;
+import com.my.liufeng.ui.model.UiRelation;
 import com.my.liufeng.ui.util.ObjectUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,8 +25,8 @@ public class ChatUI extends HBox {
 
 
     public ChatUI() {
-        ObservableList<Relation> defaultFriends = DataManager.getSessions();
-        ObservableList<Message> messages = defaultFriends == null || defaultFriends.isEmpty() ? FXCollections.emptyObservableList() :
+        ObservableList<UiRelation> defaultFriends = DataManager.getSessions();
+        ObservableList<UiMessage> messages = defaultFriends == null || defaultFriends.isEmpty() ? FXCollections.emptyObservableList() :
                 DataManager.getMessageList(defaultFriends.get(0));
         relationUI = new RelationUI(defaultFriends);
         messageUI = new MessageUI(null);
@@ -59,11 +59,11 @@ public class ChatUI extends HBox {
                 return;
             }
             if (event.getCode() == KeyCode.ENTER) {
-                Relation relation = Mine.getInstance();
+                UiRelation relation = Mine.getInstance();
                 if (ObjectUtils.isNull(relation)) {
                     return;
                 }
-                Message message = new Message() {
+                UiMessage message = new UiMessage() {
                     @Override
                     public String getNickname() {
                         return relation.getTitle();
