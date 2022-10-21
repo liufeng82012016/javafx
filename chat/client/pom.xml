@@ -34,6 +34,14 @@
             <version>0.0.1</version>
         </dependency>
 
+        <!-- github javafx ui-->
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <!--java 9+ 版本号9.0.10-->
+            <version>8.0.10</version>
+        </dependency>
+
     </dependencies>
 
     <build>
