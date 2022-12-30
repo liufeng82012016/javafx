@@ -34,7 +34,7 @@ public class EventHandlerFactory {
             if (!begin) {
                 return;
             }
-            System.out.println("lg");
+            System.out.println("login");
             // 获取代理类
             RemoteUserService userService = MethodProxyRepository.getProxy(RemoteUserService.class);
             UserInfo userInfo;
@@ -54,6 +54,7 @@ public class EventHandlerFactory {
                 if (userInfo != null) {
                     LoginEvent loginEvent = new LoginEvent();
                     loginEvent.setData(userInfo);
+                    ToastUtil.toast("登陆成功", 2000, Color.WHITE);
                     EventManager.publishEvent(loginEvent);
                 } else {
                     // 报错提示

@@ -37,6 +37,7 @@ public class EventManager {
         List<ChatEventHandler> chatEventHandlers = registerEventHandlerMap.get(event.getClass());
         for (ChatEventHandler chatEventHandler : chatEventHandlers) {
             // todo 判断是否关联UI事件，UI事件需要JavaFX线程处理
+            chatEventHandler.handle(event);
         }
     }
 }

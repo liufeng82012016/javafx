@@ -8,11 +8,11 @@ import com.my.liufeng.chat.gfi.ChatUI;
 import com.my.liufeng.chat.gfi.LoginUI;
 import com.my.liufeng.chat.manager.DataManager;
 import com.my.liufeng.rpc.context.MethodProxyRepository;
-import io.netty.util.internal.logging.InternalLogger;
-import io.netty.util.internal.logging.InternalLoggerFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 客户端启动入口，继承自JavaFX application，打开一个图形界面
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * @author liufeng
  */
 public class ClientApplication extends Application implements ChatEventHandler {
-    private static final InternalLogger LOG = InternalLoggerFactory.getInstance(ClientApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClientApplication.class);
 
     /**
      * JavaFx主页
@@ -29,6 +29,7 @@ public class ClientApplication extends Application implements ChatEventHandler {
 
     public static void main(String[] args) {
         launch(args);
+        LOGGER.info("client init success");
     }
 
     @Override
